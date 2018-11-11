@@ -1,0 +1,330 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\begin{document}
+
+\section{Always True or Always False?}
+
+\begin{enumerate}[(a)]
+    \item $x \land (x \implies y) \land (\neg y)$
+    
+    It is a contradiction.
+    
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $x$ & $y$ & $x \implies y$ & $\neg y$ & $x \land (x \implies y) \land (\neg y)$ \\
+        \hline
+        F & F & T & T & F \\
+        F & T & T & F & F \\
+        T & F & F & T & F \\
+        T & T & T & F & F \\
+        \hline
+    \end{tabular}
+    
+    \item $x \implies (x \lor y)$
+    
+    It is a tautology.
+    
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        $x$ & $y$ & $x \lor y$ & $x \implies (x \lor y)$ \\
+        \hline
+        F & F & F & T \\
+        F & T & T & T \\
+        T & F & T & T \\
+        T & T & T & T \\
+        \hline
+    \end{tabular}
+    
+    \item $(x \lor y) \lor (x \lor \neg y)$
+    
+    It is a tautology.
+    
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $x$ & $y$ & $x \lor y$ & $x \lor \neg y$ & $(x \lor y) \lor (x \lor \neg y)$ \\
+        \hline
+        F & F & F & T & T \\
+        F & T & T & F & T \\
+        T & F & T & T & T \\
+        T & T & T & T & T \\
+        \hline
+    \end{tabular}
+    
+    \item $(x \implies y) \lor (x \implies \neg y)$
+    
+    It is a tautology.
+    
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $x$ & $y$ & $x \implies y$ & $ x \implies \neg y$ & $(x \implies y) \lor (x \implies \neg y)$ \\
+        \hline
+        F & F & T & T & T \\
+        F & T & T & T & T \\
+        T & F & F & T & T \\
+        T & T & T & F & T \\
+        \hline
+    \end{tabular}
+    
+    \item $(x \lor y) \land \left( \neg (x \land y) \right)$
+    
+    It is neither a tautology nor a contradiction.
+    
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $x$ & $y$ & $x \lor y$ & $\neg (x \land y)$ & $(x \lor y) \land \left( \neg (x \land y) \right)$ \\
+        \hline
+        F & F & F & T & F \\
+        F & T & T & T & T \\
+        T & F & T & T & T \\
+        T & T & T & F & F \\
+        \hline
+    \end{tabular}
+    
+    \item $(x \implies y) \land (\neg x \implies y) \land (\neg y)$
+    
+    It is a contradiction.
+    
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        $x$ & $y$ & $x \implies y$ & $\neg x \implies y$ & $\neg y$ & $(x \implies y) \land (\neg x \implies y) \land (\neg y)$ \\
+        \hline
+        F & F & T & F & T & F \\
+        F & T & T & T & F & F \\
+        T & F & F & T & T & F \\
+        T & T & T & T & F & F \\
+        \hline
+    \end{tabular}
+    
+\end{enumerate}
+
+\section{Miscellaneous Logic}
+
+\begin{enumerate}[(a)]
+    \item Let statement, $(\forall x \in \mathbb{R})(\exists y \in \mathbb{R}) G(x, y)$, be true for predicate $G(x, y)$.
+    \begin{enumerate}[(i)]
+        \item $G(3, 4)$
+        
+        Possibly true. According to the statement, $(\exists y \in \mathbb{R}) G(3, y)$. We can choose $G(x, y)$ being $x < y$ such that $G(3, 4)$ is true. Or choose $x > y$ such that $G(3, 4)$ is false.
+        
+        \item $(\forall x \in \mathbb{R}) G(x, 3)$
+        
+        Possibly true. $x^2 + y^2 \geq 0$ makes it true, and $x > y$ makes it false.
+        
+        \item $\exists y G(3, y)$
+        
+        Certainly true. Let $x = 3$, according to the original statement, there exists a real number $y$ such that $G(3, y)$ is true.
+        
+        \item $\forall y \neg G(3, y)$
+        
+        Certainly false. It is a negation of the statement in (iii). Since the statement in (iii) is certainly true, this statement is certainly false.
+        
+        \item $\exists x G(x, 4)$
+        
+        Possibly true. For example, $x = y$ makes it true, and $y \neq 4$ makes it false.
+        
+    \end{enumerate}
+    
+    \item $(X \land \neg Y \land \neg Z) \lor (\neg X \land Y \land \neg Z) \lor (\neg X \land \neg Y \land Z)$
+\end{enumerate}
+
+\section{Propositional Practice}
+
+\begin{enumerate}[(a)]
+    \item There is a real number which is not rational.
+    
+    $(\exists x \in \mathbb{R}) (\forall a \in \mathbb{Z}) (\forall b \in \mathbb{R}, b \neq 0) (x \neq \frac{a}{b})$
+    
+    It is true. For example, $\sqrt{2}$ is a real number but not a rational number.
+    
+    \item All integers are natural numbers or are negative, but not both.
+    
+    $(\forall x \in \mathbb{Z}) \implies (x \in \mathbb{N}) \lor (x < 0)$
+    
+    It is true. Because the set of integers include the set of natural numbers and the set of negative integers.
+    
+    \item If a natural number is divisible by 6, it is divisible by 2 or it is divisible by 3.
+    
+    $(\forall x \in \mathbb{N}) \left( (6 \mid x) \implies (2 \mid x) \lor (3 \mid x) \right)$
+    
+    It is true. If a natural number $x$ is divisible by 6, then there exists a natural number $q$ such that $x = 6q$. Then, we can get $x = 2 \times 3 \times q$ which shows $x$ is divisible by 2 and 3.
+    
+    \item $(\forall x \in \mathbb{R}) (x \in \mathbb{C})$
+    
+    All real numbers are complex numbers. This is true, the set of complex numbers include the set of real numbers.
+    
+    \item $(\forall x \in \mathbb{Z}) \left( \left( (2 \mid x) \lor (3 \mid x) \right) \implies (6 \mid x) \right)$
+    
+    If an integer is divisible by 2 or is divisible by 3, then it is divisible by 6. It is false. For example, 4 is divisible by 2 but not divisible by 6.
+    
+    \item $(\forall x \in \mathbb{N}) \left( (x > 7) \implies \left( (\exists a, b \in \mathbb{N}) (a + b = x) \right) \right)$
+    
+    Every natural number which is greater than 7 can be represented as the sum of two natural number. It is true, since we can choose $a = 1$ and $b = x - 1$.
+\end{enumerate}
+
+\section{Proof By?}
+
+\begin{enumerate}[(a)]
+    \item $(\forall x, y \in \mathbb{Z}) (10 \nmid xy) \implies (10 \nmid x) \land (10 \nmid y)$
+    
+    \begin{proof}
+    We proceed by contraposition. The contraposition is $(\forall x, y \in \mathbb{Z}) \left( (10 \mid x) \lor (10 \mid y) \right) \implies (10 \mid xy)$. There are two cases:
+    \begin{enumerate}[(1)]
+        \item If $10 \mid x$, then there is an integer $p$ such that $x = 10p$. $xy = 10py$ means $10 \mid xy$.
+        \item If $10 \mid y$, then there is an integer $q$ such that $y = 10q$. $xy = 10qy$ means $10 \mid xy$.
+    \end{enumerate}
+    \end{proof}
+    
+    \item Since the contraposition of proposition (a) is equivalent to proposition(a), the contraposition is true.
+    
+    \item The converse if false. For example, we take $x = 2$ and $y = 5$ both of which are not divisible by 10, but $xy$ equals 10 and is divisible by 10.
+\end{enumerate}
+
+\section{Prove or Disprove}
+
+\begin{enumerate}[(a)]
+    \item $(\forall n \in \mathbb{N})$ if $n$ is odd then $n^2 + 2n$ is odd.
+    
+    \begin{proof}
+    If $n$ is odd, then $n = 2k + 1$ for $k \in \mathbb{Z}$.
+    
+    \begin{equation*}
+        \begin{split}
+            n^2 + 2n & = (2k + 1)^2 + 2(2k + 1) \\
+                     & = 4k^2 + 8k + 3 \\
+                     & = 2(2k^2 + 4k + 1) + 1
+        \end{split}
+    \end{equation*}
+    
+    Since $2(2k^2 + 4k + 1)$ is even, the number that is one greater than $2(2k^2 + 4k + 1)$ must be odd.
+    \end{proof}
+    
+    \item $(\forall x, y \in \mathbb{R}) min(x, y) = (x + y - \mid x - y \mid) / 2$
+    
+    \begin{proof}
+    We proceed by case analyses. There are three cases:
+    \begin{enumerate}[(1)]
+        \item If $x = y$, then $min(x, y) = x = y$.
+        \begin{equation*}
+            \begin{split}
+                & (x + y - \mid x - y \mid) / 2 \\
+                = & (x + x - \mid x - x \mid) / 2 \\
+                = & x \\
+                = & y
+            \end{split}
+        \end{equation*}
+        
+        Both sides of the equation are equal.
+        
+        \item If $x > y$, then $min(x, y) = y$.
+        \begin{equation*}
+            \begin{split}
+                & (x + y - \mid x - y \mid) / 2 \\
+                = & (x + y - x + y) / 2 \\
+                = & y
+            \end{split}
+        \end{equation*}
+        
+        Both sides of the equation are equal.
+        
+        \item If $x < y$, then $min(x, y) = x$
+        \begin{equation*}
+            \begin{split}
+            & (x + y - \mid x - y \mid) / 2 \\
+             = & (x + y + x - y) / 2 \\
+             = & x
+            \end{split}
+        \end{equation*}
+        
+        Both sides of the equation are equal.
+    \end{enumerate}
+    \end{proof}
+    
+    \item $(\forall a, b \in \mathbb{R})$ if $a + b \leq 10$ then $a \leq 7$ or $b \leq 3$.
+    
+    \begin{proof}
+    We proceed by contraposition. The contraposition is $(a \geq 7) \land (b \geq 3) \implies (a + b \geq 10) $ which is obviously true.
+    \end{proof}
+    
+    \item $(\forall r \in \mathbb{R})$ if $r$ is irrational then $r + 1$ is irrational.
+    
+    \begin{proof}
+    We proceed by contraposition. The proposition, if $r$ is irrational then $r + 1$ is irrational is equivalent to its contraposition, if $r + 1$ is rational then $r$ is rational.
+    
+    If $r + 1$ is rational, there are two integers $a$ and $b$ such that $r + 1 = \frac{a}{b}$. Then
+    
+    \begin{equation*}
+        \begin{split}
+            r & = r + 1 - 1 \\
+              & = \frac{a}{b} - 1 \\
+              & = \frac{a - b}{b}
+        \end{split}
+    \end{equation*}
+    
+    which means there are two integers $a - b$ and $b$ such that $r = \frac{a - b}{b}$. Therefor, $r$ is rational.
+    
+    \end{proof}
+    
+    \item $(\forall n \in \mathbb{Z}^+) 10n^2 > n!$.
+    
+    It is false. $n = 10$ is a counter example that $10 \times 10^2 = 1000 < 10! = 3628800$.
+\end{enumerate}
+
+\section{Preserving Set Operations}
+
+\begin{enumerate}[(a)]
+    \item $f^{-1}(A \cup B) = f^{-1}(A) \cup f^{-1}(B)$.
+    uu
+    \begin{proof}
+    We first prove $f^{-1}(A \cup B) \subseteq f^{-1}(A) \cup f^{-1}(B)$. Suppose $x \in f^{-1}(A \cup B)$ or $f(x) \in A \cup B$. Then, either $f(x)$ or $A \lor f(x) \in B$ is true. Therefore, $f(x) \in A \cup B$ is true. It means $x  \in f^{-1}(A \cup B) \implies x \in f^{-1}(A) \cup f^{-1}(B)$ and $f^{-1}(A \cup B) \subseteq f^{-1}(A) \cup f^{-1}(B)$.
+    
+    Finally, we prove $f^{-1}(A) \cup f^{-1}(B) \subseteq f^{-1}(A \cup B)$. Suppose $x \in f^{-1}(A) \cup f^{-1}(B)$. It implies that either $x \in f^{-1}(A)$ or $x \in f^{-1}(B)$ is true. Since $f(x) \in A \lor f(x) \in B$ is true, $f(x) \in A \cup B$ is true. It means $x \in f^{-1}(A) \cup f^{-1}(B) \implies x \in f^{-1}(A \cup B)$ and $f^{-1}(A) \cup f^{-1}(B) \subseteq f^{-1}(A \cup B)$.
+    \end{proof}
+    
+    \item $f^{-1}(A \cap B) = f^{-1}(A) \cap f^{-1}(B)$.
+    
+    \begin{proof}
+    Suppose $x \in f^{-1}(A \cap B)$, then $f(x) \in A \cap B$. If $f(x) \in A \cap B$, then $\left( f(x) \in A \right) \land \left( f(x) \in B \right)$ and $x \in f^{-1}(A) \cap f^{-1}(B)$. If $x \in f^{-1}(A \cap B) \implies x \in f^{-1}(A) \cap f^{-1}(B)$, then $f^{-1}(A \cap B) \subseteq f^{-1}(A) \cap f^{-1}(B)$.
+    
+    Suppose $x \in f^{-1}(A) \cap f^{-1}(B)$, then $\left( x \in f^{-1}(A) \right) \land \left( x \in f^{-1}(B) \right)$. If $\left( f(x) \in A \right) \land \left( f(x) \in B \right)$, then $f(x) \in A \cap B$. If $x \in f^{-1}(A) \cap f^{-1}(B) \implies x \in f^{-1}(A \cap B)$, then $f^{-1}(A) \cap f^{-1}(B) \subseteq f^{-1}(A \cap B)$.
+    \end{proof}
+    
+    \item $f^{-1}(A \setminus B) = f^{-1}(A) \setminus f^{-1}(B)$.
+    
+    \begin{proof}
+    Suppose $x \in f^{-1}(A \setminus B)$, then $f(x) \in (A \setminus B)$. If $f(x) \in (A \setminus B)$, then $\left( f(x) \in A \right) \land \left( f(x) \notin B \right)$. If $\left( f(x) \in A \right) \land \left( f(x) \notin B \right)$, then $x \in f^{-1}(A \setminus B)$. Therefore, if $x \in f^{-1}(A \setminus B) \implies x \in f^{-1}(A \setminus B)$, then $f^{-1}(A \setminus B) \subseteq f^{-1}(A) \setminus f^{-1}(B)$.
+    
+    Suppose $x \in f^{-1}(A) \setminus f^{-1}(B)$, then $\left( x \in f^{-1}(A) \right) \land \left( x \notin f^{-1}(B) \right)$. If $\left( x \in f^{-1}(A) \right) \land \left( x \notin f^{-1}(B) \right)$, then $\left( f(x) \in A \right) \land \left( f(x) \notin B \right)$ and $f(x) \in (A \setminus B)$. If $f(x) \in (A \setminus B)$, then $x \in f^{-1}(A \setminus B)$. Therefor if $x \in f^{-1}(A) \setminus f^{-1}(B) \implies x \in f^{-1}(A \setminus B)$, then $f^{-1}(A) \setminus f^{-1}(B) \subseteq f^{-1}(A \setminus B)$.
+    \end{proof}
+    
+    \item $f(A \cup B) = f(A) \cup f(B)$.
+    
+    \begin{proof}
+    Suppose $y \in f(A \cup B)$, then $\left( \exists x \in (A \cup B) \right) \left( y = f(x) \right)$. Since $(x \in A) \lor (x \in B)$ is true, $\left(y \in f(A)\right) \lor \left( y \in f(B) \right)$ is true. Then $y \in f(A) \cup f(B)$. Because $y \in f(A \cup B) \implies y \in \left( f(A) \cup f(B) \right)$, $f(A \cup B) \subseteq \left( f(A) \cup f(B) \right)$.
+    
+    Suppose $y \in f(A) \cup f(B)$, then $\left( y \in f(A) \right) \lor \left( y \in f(B) \right)$ is true. Then $\left( (\exists x \in A) \left( y = f(x) \right) \right) \lor \left( (\exists x \in B) \left( y = f(x) \right) \right)$ is true, and $(\exists x \in A \cup B) \left( y = f(x) \right)$ is true. If $(\exists x \in A \cup B) \left( y = f(x) \right)$ is true, then $y \in f(A \cup B)$. Since $y \in \left( f(A) \cup f(B) \right) \implies y \in f(A \cup B)$, then $\left( f(A) \cup f(B) \right) \subseteq f(A \cup B)$.
+    \end{proof}
+    
+    \item $f(A \cap B) \subseteq \left( f(A) \cap f(B) \right)$, and give an example where equality does not hold.
+    
+    \begin{proof}
+    Suppose $y \in f(A \cap B)$, then $(\exists x \in A \cap B) \left( y = f(x) \right)$. Since $x \in A \cap B$, then $\left( (\exists x \in A) \left( y = f(x) \right) \right) \land \left( (\exists x \in B) \left( y = f(x) \right) \right)$ is true, and $\left( y \in f(A) \right) \land \left( y \in f(B) \right)$ is true. Then $y \in \left( f(A) \cap f(B) \right)$. Since $y \in f(A \cap B) \implies y \in \left( f(A) \cap f(B) \right)$, $f(A \cap B) \subseteq \left( f(A) \cap f(B) \right)$.
+    \end{proof}
+    
+    There is an example where equality does not hold. Let $f(x) = x ^ 2$, $A = \{-1, -2, -3\}$ and $B = \{1, 2, 3\}$. Then $f(A) \cap f(B) = \{1, 4, 9\}$. Since $A \cap B = \emptyset$, then $f(A \cap B) = \emptyset$. Therefore $f(A \cap B) \supseteq \left( f(A) \cap f(B) \right)$ is false.
+    
+    \item $f(A \setminus B) \supseteq f(A) \setminus f(B)$, and give an example where equality does not hold.
+    
+    \begin{proof}
+    Suppose $y \in f(A) \setminus f(B)$, then $\left( y \in f(A) \right) \land \left( y \notin f(B) \right)$ is true. Then $\left( (\exists x \in A) \left( y = f(x) \right) \right) \land \left (\forall x \in B) \left( y \neq f(x) \right) \right)$ is true. So $(\exists x \in A) \left( y = f(x) \right) \implies x \notin B$. Since $x \in A \setminus B$, $y \in f(A \setminus B)$. Because we do not take any special value for $y$, $(\forall y) \left( y \in f(A) \setminus f(B) \implies y \in f(A \setminus B) \right)$. Then $f(A \setminus B) \supseteq f(A) \setminus f(B)$ as desired.
+    \end{proof}
+    
+    There is an example where equality does not hold. Let $f(x) = x^2$, $A = \{-1, -2, -3, 1, 2, 3\}$ and $B = \{-1, -2, -3\}$. Then $A \setminus B = \{1, 2, 3\}$, $f(A \setminus B) = \{1, 4, 9\}$, $f(A) = \{1, 4, 9\}$, and $f(B) = \{1, 4, 9\}$. Since $f(A) \setminus f(B) = \emptyset$, $f(A \setminus B) \subseteq f(A) \setminus f(B)$ is false.
+    
+\end{enumerate}
+
+\end{document}
